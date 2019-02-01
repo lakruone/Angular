@@ -1,0 +1,586 @@
+
+<app-navthree></app-navthree>
+<div style="padding-left:30px">
+<div id="form">
+     <div id="head">    
+
+    <button id="bhead" ><b>Birth Registration Details</b></button>
+    </div><!--how lock title when scrolling
+                                         add hide and show button to fieldset-->
+ <form name="form" (ngSubmit)="f.form.valid && createRegistration()"  #f="ngForm" novalidate>  
+                                                 
+    <div>
+            <div class="form-group">
+                   
+                <input type="text" [(ngModel)]="child.registrationId" id="regid" name="regid" class="form-control input"  placeholder="<New>"
+                        [ngClass]="{ 'is-invalid': f.submitted && regid.invalid }"
+                         #regid="ngModel" required /> 
+                        <label class="control-label input-label">Birth Registration Id : </label>
+                        <div *ngIf="f.submitted && !regid.valid" class="invalid-feedback">
+                                <div *ngIf="regid.errors.required">Birth Registration ID is required</div>
+                              </div>              
+                </div>
+        </div>
+        <div class="form-group" >
+            
+                
+                <input type="date"  [(ngModel)]="child.registrationDate" id="regdate" name="regdate" class="form-control input" placeholder="12/24/2014" 
+                [ngClass]="{ 'is-invalid': f.submitted && regdate.invalid }"
+                         #regdate="ngModel" required />
+                        <label class="control-label input-label" >Registration Date:</label>
+                        <div *ngIf="f.submitted && !regdate.valid" class="invalid-feedback">
+                                <div *ngIf="regdate.errors.required">Registration Date is required</div>
+                        </div>
+            </div>
+            <br>
+            <!--child details-->
+            <fieldset class="scheduler-border">
+            <legend class="scheduler-border" style="width:8%">Child Details</legend>
+            <div>
+            <div class="control-group">
+                <div >
+                    
+                    <input type="text"  [(ngModel)]="child.fullName" id="fullname" name="fullName" class="form-control input" 
+                    [ngClass]="{ 'is-invalid': f.submitted && fullName.invalid }"
+                         #fullName="ngModel" required  />
+                    <label class="control-label input-label" >Full Name : </label>
+                    <div *ngIf="f.submitted && !fullName.valid" class="invalid-feedback">
+                        <div *ngIf="fullName.errors.required">Full Name is required</div>
+                </div>   
+                </div>
+            </div>
+            <div class="control-group">
+                <div >
+                    <input type="text"  [(ngModel)]="child.hin"  id="hin" name="hin" class="form-control input" 
+                    [ngClass]="{ 'is-invalid': f.submitted && hin.invalid }"
+                         #hin="ngModel" required />
+                         <label class="control-label input-label" >HIN :</label>
+                         <div *ngIf="f.submitted && !hin.valid" class="invalid-feedback">
+                            <div *ngIf="hin.errors.required">HIN is required</div>
+                    </div>   
+                </div>
+            </div>
+            </div>
+            <br>
+            <br>
+            <!--birth details-->
+            <fieldset  id="inner">
+                <legend class="scheduler-border"style="width:8%">Birth Details</legend>
+                <div class="control-group">
+                    <div >
+                         
+                        <input type="date"  [(ngModel)]="child.dateOfBirth" id="dateOfBirth" name="dateOfBirth" class="form-control input" 
+                        [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }"
+                         #dateOfBirth="ngModel" required/> 
+                         <label class="control-label input-label" >Date Of Birth : </label>
+                         <div *ngIf="f.submitted && !dateOfBirth.valid" class="invalid-feedback">
+                            <div *ngIf="dateOfBirth.errors.required">Date of Birth is required</div>
+                    </div> 
+                    </div>
+                </div>
+                <div class="control-group">
+                        
+                        <input type=" time "  step="1" [(ngModel)]="child.timeOfBirth" id="timeofbirth" name="timeOfBirth"
+                        class="form-control input" [ngClass]="{ 'is-invalid': f.submitted && timeOfBirth.invalid }"
+                        #timeOfBirth="ngModel" required/>
+                        <label class="control-label input-label" >Time of Birth :</label>
+                        <div *ngIf="f.submitted && !timeOfBirth.valid" class="invalid-feedback">
+                            <div *ngIf="timeOfBirth.errors.required">Time of Birth is required</div>
+                    </div>
+
+                </div>
+                <div>
+                    <label class="control-label input-label" >Gender :</label>
+            <select class="form-control input" id="selectGender" [(ngModel)]="child.gender" name="gender"
+            [ngClass]="{ 'is-invalid': f.submitted && selectGender.invalid }"
+                     #selectGender="ngModel" required>
+             <option *ngFor="let g of gender" >{{g}}</option>
+            </select>
+            <div *ngIf="f.submitted && !selectGender.valid" class="invalid-feedback">
+                <div *ngIf="selectGender.errors.required">Gender is required</div>
+        </div>
+            
+        </div><br>
+            <div>
+            
+            <input type="number" [(ngModel)]="child.birthWeight" class="form-control input" id="birthWeight" name="birthWeight" placeholder="(in grams)"
+            [ngClass]="{ 'is-invalid': f.submitted && birthWeight.invalid }"
+            #birthWeight="ngModel" required />
+            <label class="control-label input-label" >Weight :</label>
+            <div *ngIf="f.submitted && !birthWeight.valid" class="invalid-feedback">
+                <div *ngIf="birthWeight.errors.required">Birth Weight is required</div>
+        </div>
+        </div>
+         <!--   <div class="control-group">
+              <div name="timeofbirth">
+                  <label class="control-label input-label" >Time of Birth :</label>
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    
+                  <select class="tob"  >
+                      <option *ngFor="let x1 of n1">{{x1}}</option>
+                  </select>
+                  :
+                  <select class="tob" >
+                      <option *ngFor="let x2  of n2">{{x2}}</option>
+                  </select>
+                  :
+                  <select class="tob">
+                      <option *ngFor="let x2 of n2">{{x2}}</option>
+                  </select>
+                  &nbsp;
+                  <select class="tob">
+                      <option *ngFor="let t of ap">{{t}}</option>
+                  </select>
+              </div> 
+            
+            </div>-->
+
+            <!--div class="control-group" id="gender">
+            <label class="control-label input-label" >Gender :</label>
+            <select id="selectGender" [(ngModel)]="child.gender" name="gender">
+                <option *ngFor="let g of gender" >{{g}}</option>
+            </select>
+            <br>
+            <label class="control-label input-label" >Weight :</label>
+            <input type="number" [(ngModel)]="child.birthWeight" id="birthWeight" name="birthWeight" placeholder="(in grams)"/>
+            </div-->
+            </fieldset>
+            <fieldset  id="inner">
+        <!--vaccination details-->       
+                <legend class="scheduler-border" style="width:11%">Vaccinaton Details</legend>
+                <div class="control-group">
+                    <div >
+                         
+                        <input type="text" [(ngModel)]="child.vaccineProfile" id="vaccineProfile" name="vaccineProfile" class="form-control input" 
+                        [ngClass]="{ 'is-invalid': f.submitted && vaccineProfile.invalid }"
+                        #vaccineProfile="ngModel" required/>  
+                        <label class="control-label input-label" >Vaccination Profile : </label>
+                        <div *ngIf="f.submitted && !vaccineProfile.valid" class="invalid-feedback">
+                            <div *ngIf="vaccineProfile.errors.required"> Vaccine Profile is required</div>
+                    </div>
+                    </div>
+                </div>
+            </fieldset>
+ <!-- birth location details-->     
+         <fieldset  id="inner">
+                <legend class="scheduler-border" style="width:13%">Birth Location Details</legend>
+                <div class="control-group">
+                    <div>
+                         
+                        <input type="text"  [(ngModel)]="child.placeOfBirth" id="placeOfBirth" name="placeOfBirth" class="form-control input"
+                        [ngClass]="{ 'is-invalid': f.submitted && placeOfBirth.invalid }"
+                        #placeOfBirth="ngModel" required/>  
+                        <label class="control-label input-label" >Place Of Birth : </label>
+                        <div *ngIf="f.submitted && !placeOfBirth.valid" class="invalid-feedback">
+                            <div *ngIf="placeOfBirth.errors.required"> Place Of Birth is required</div>
+                    </div>
+                    </div>
+                    <div>
+                         
+                        <input type="text"  [(ngModel)]="child.city" id="city" name="city" class="form-control input"
+                        [ngClass]="{ 'is-invalid': f.submitted && city.invalid }"
+                        #city="ngModel" required/>  
+                        <label class="control-label input-label" >City: </label>
+                        <div *ngIf="f.submitted && !city.valid" class="invalid-feedback">
+                            <div *ngIf="city.errors.required"> City is required</div>
+                    </div>
+                    </div>
+                </div>
+                </fieldset>
+    <!--current location-->            
+                <fieldset  id="inner">
+                        <legend class="scheduler-border" style="width:10%">Current Location</legend>
+                        <div class="control-group">
+                            <div >
+                                 
+                               <!-- <input type="text"  id="rdhs" name="rdhs"  class="input"/> -->
+                               <select class="form-control input" id="rdhsarea" [(ngModel)]="area.rdhs" (change)="selectOption_1($event.target.value)" name="name"
+                               [ngClass]="{ 'is-invalid': f.submitted && rdhsarea.invalid }"
+                                 #rdhsarea="ngModel" required> 
+                                <option [ngValue]="rdhsa.name" *ngFor="let rdhsa of rdhs" >{{rdhsa.name}}</option>
+                            </select>  
+                            <label class="control-label input-label" >RDHS Area : </label>
+                            <div *ngIf="f.submitted && !rdhsarea.valid" class="invalid-feedback">
+                                <div *ngIf="rdhsarea.errors.required"> RDHS Area is required</div>
+                        </div>
+                            </div>
+                        </div>
+                
+                        <div class="control-group">
+                            <div >
+                                 
+                               <!-- <input type="text"  id="rdhs" name="rdhs"  class="input"/> -->
+                               <select class=" form-control input"  id="dsarea" [(ngModel)]="area.ds" (change)="selectOption_2($event.target.value)" name="name"
+                               [ngClass]="{ 'is-invalid': f.submitted && dsarea.invalid }"
+                                 #dsarea="ngModel" required>
+                                <option [ngValue]="dsa.name" *ngFor="let dsa of ds" >{{dsa.name}}</option>
+                            </select>  
+                            <label class="control-label input-label" >DS Area : </label>
+                            <div *ngIf="f.submitted && !dsarea.valid" class="invalid-feedback">
+                                <div *ngIf="dsarea.errors.required"> DS Area is required</div>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div >
+                                 
+                               <!-- <input type="text"  id="moh" name="moh"  class="input"/>-->
+                               <select class="form-control input" id="moharea" [(ngModel)]="area.moh" 
+                               (change)="selectOption_3($event.target.value)" name="name"
+                               [ngClass]="{ 'is-invalid': f.submitted && moharea.invalid }"
+                                 #moharea="ngModel" required>
+                                <option [ngValue]="moha.name" *ngFor="let moha of moh" >{{moha.name}}</option>
+                            </select> 
+                            <label class="control-label input-label" >MOH Area : </label>
+                            <div *ngIf="f.submitted && !moharea.valid" class="invalid-feedback">
+                                <div *ngIf="moharea.errors.required"> MOH Area is required</div>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div >
+                                 
+                                <!--<input type="text"  id="phm" name="phm"  class="input"/>-->
+                                <select class="form-control input" id="phmarea" [(ngModel)]="area.phm" (change)="selectOption_4($event.target.value)" name="name"
+                                [ngClass]="{ 'is-invalid': f.submitted && phmarea.invalid }"
+                                 #phmarea="ngModel" required>
+                                    <option [ngValue]="phma.name" *ngFor="let phma of phm" >{{phma.name}}</option>
+                                </select>   
+                                <label class="control-label input-label" >PHM Area : </label>
+                                <div *ngIf="f.submitted && !phmarea.valid" class="invalid-feedback">
+                                    <div *ngIf="phmarea.errors.required"> PHM Area is required</div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div >
+                                 
+                               <!-- <input type="text"  id="gn" name="gn"  class="input"/>  -->
+                               <select class="form-control input" id="gnarea" [(ngModel)]="area.gn" name="gnname"
+                               [ngClass]="{ 'is-invalid': f.submitted && gnarea.invalid }"
+                                 #gnarea="ngModel" required>
+                                <option  *ngFor="let gna of gn" >{{gna.name}}</option>
+                            </select> 
+                            <label class="control-label input-label" >GN Division : </label>
+                            <div *ngIf="f.submitted && !gnarea.valid" class="invalid-feedback">
+                                <div *ngIf="gnarea.errors.required"> GN Area is required</div>
+                        </div>
+                            </div>
+                        </div>
+                       
+                    </fieldset>
+  <!--current address-->           
+              <fieldset  id="inner">
+                    <legend class="scheduler-border" style="width:10%">Current Address</legend>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="addresslineone" [(ngModel)]="address.addressLineOne" name="addresone"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && addresslineone.invalid }"
+                                 #addresslineone="ngModel" required/>  
+                                 <label class="control-label input-label" >Address Line 1: </label>
+                                 <div *ngIf="f.submitted && !addresslineone.valid" class="invalid-feedback">
+                                    <div *ngIf="addresslineone.errors.required">Address Line 1 is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div > 
+                            
+                            <input type="text"  id="addresslinetwo" [(ngModel)]="address.addressLineTwo" name="addresstwo"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && addresslinetwo.invalid }"
+                                 #addresslinetwo="ngModel" required/> 
+                                 <label class="control-label input-label" >Address Line 2: </label>
+                                 <div *ngIf="f.submitted && !addresslinetwo.valid" class="invalid-feedback">
+                                    <div *ngIf="addresslinetwo.errors.required">Address Line 2 is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="addresslinethree" [(ngModel)]="addressLineThree" name="addressthree"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && addresslinethree.invalid }"
+                                 #addresslinethree="ngModel" required/> 
+                                 <label class="control-label input-label" >Address Line 3: </label>
+                                 <div *ngIf="f.submitted && !addresslinethree.valid" class="invalid-feedback">
+                                    <div *ngIf="addresslinethree.errors.required">Address Line 3 is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="postal" [(ngModel)]="address.postalCode" name="postalcode"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && postal.invalid }"
+                            #postal="ngModel" required/>  
+                            <label class="control-label input-label" >Postal Code: </label>
+                            <div *ngIf="f.submitted && !addresslinetwo.valid" class="invalid-feedback">
+                                <div *ngIf="addresslinetwo.errors.required">Postal Code is required</div>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div>
+                             
+                            <select class="form-control input" [(ngModel)]="address.addressType" name="type" id="addressType"
+                            [ngClass]="{ 'is-invalid': f.submitted && addressType.invalid }"
+                            #addressType="ngModel" required>
+                                <option *ngFor="let ad of addresstype" >{{ad}}</option>
+                            </select>
+                            <label class="control-label input-label" >Address Type: </label>
+                            <div *ngIf="f.submitted && !addressType.valid" class="invalid-feedback">
+                                <div *ngIf="addressType.errors.required">Address Type is required</div>
+                        </div>
+                        </div>
+                    </div>   
+                  </fieldset>
+   <!--parent details-->               
+          <fieldset  id="inner">
+                    <legend class="scheduler-border" style="width:10%">Parent Details</legend>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="mothername" [(ngModel)]="parent.motherMaidenName" name="mothername"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && mothername.invalid }"
+                            #mothername="ngModel" required/> 
+                            <label class="control-label input-label" >Mother Maiden Name: </label> 
+                            <div *ngIf="f.submitted && !mothername.valid" class="invalid-feedback">
+                                <div *ngIf="mothername.errors.required">Mother's Name is required</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="mnic"[(ngModel)]="parent.nic" name="mnic"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && mnic.invalid }"
+                            #mnic="ngModel" required/>  
+                            <label class="control-label input-label" >Mother's NIC : </label>
+                            <div *ngIf="f.submitted && !mnic.valid" class="invalid-feedback">
+                                <div *ngIf="mnic.errors.required">Mother's NIC is required</div>
+                        </div>
+                        </div>
+                     </div>
+                     <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="mregno"[(ngModel)]="parent.registrationNo" name="mregno"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && mregno.invalid }"
+                            #mregno="ngModel" required/> 
+                            <label class="control-label input-label" >Mothers Reg.No: </label>
+                            <div *ngIf="f.submitted && !mregno.valid" class="invalid-feedback">
+                                <div *ngIf="mregno.errors.required">Mother's Registration No. is required</div>
+                        </div>
+                        </div>
+                     </div>
+                     <div class="control-group">
+                        <div>
+                               
+                              <input type="text"  id="farthername"[(ngModel)]="parent.fatherName" name="farthername"  class="form-control input"
+                              [ngClass]="{ 'is-invalid': f.submitted && farthername.invalid }"
+                            #farthername="ngModel" required/>  
+                            <label class="control-label input-label" >Father Name: </label>
+                            <div *ngIf="f.submitted && !farthername.valid" class="invalid-feedback">
+                                <div *ngIf="farthername.errors.required">Father's Name is required</div>
+                        </div>
+                        </div>
+                     </div>
+                     <div class="control-group">
+                         <div>
+                               
+                              <input type="text"  id="farthernic" [(ngModel)]="parent.fatherNic" name="farthernic"  class="form-control input"
+                              [ngClass]="{ 'is-invalid': f.submitted && farthernic.invalid }"
+                            #farthernic="ngModel" required/>  
+                            <label class="control-label input-label" >Father's NIC: </label>
+                            <div *ngIf="f.submitted && !farthernic.valid" class="invalid-feedback">
+                                <div *ngIf="farthernic.errors.required">Father's NIC is required</div>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                          <div >
+                               
+                              <input type="text"  id="contact" [(ngModel)]="parent.contactNo" name="contact"  class="form-control input"
+                              [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }"
+                            #contact="ngModel" required/>  
+                            <label class="control-label input-label" >Contact No: </label>
+                            <div *ngIf="f.submitted && !contact.valid" class="invalid-feedback">
+                                <div *ngIf="contact.errors.required">Contact No. is required</div>
+                        </div>
+                          </div>
+                      </div>
+                      <br>
+                        <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="check1" [(ngModel)]="parent.multipleBirth" name="multiplebirth">&nbsp;&nbsp;Multiple Births
+                        </label>
+                        <br>
+                        <label>
+                                <input type="checkbox" id="check2" [(ngModel)]="parent.crs" name="CRS">&nbsp;&nbsp;Protection Status against Congenital Rubbella
+                                Syndrome(CRS)
+                        </label>
+                        <br>
+                        <label>
+                                <input type="checkbox" id="check3" [(ngModel)]="parent.nnt" name="NNT">&nbsp;&nbsp;Protection Status against Neonatal Tetanus(NNT)
+                        </label>
+                        </div>
+           </fieldset> 
+<!-- guradian details-->
+                <fieldset  id="inner">
+                    <legend class="scheduler-border" style="width:10%">Guradian Details</legend>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="guardianname" [(ngModel)]="guardian.name" name="guardianname"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && guardianname.invalid }"
+                            #guardianname="ngModel" required/>  
+                            <label class="control-label input-label" >Guardian Name: </label>
+                            <div *ngIf="f.submitted && !guardianname.valid" class="invalid-feedback">
+                                <div *ngIf="guardianname.errors.required">Guardian's Name is required</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div >
+                             
+                            <input type="text"  id="guardiannic" [(ngModel)]="guardian.nic" name="guardiannic"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && guardiannic.invalid }"
+                            #guardiannic="ngModel" required/>  
+                            <label class="control-label input-label" >Guardian NIC: </label>
+                            <div *ngIf="f.submitted && !guardiannic.valid" class="invalid-feedback">
+                                <div *ngIf="guardiannic.errors.required">Guardian's NIC is required</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div >
+                            
+                            <input type="text"  id="guardiantelephone"[(ngModel)]="guardian.telephone" name="guardiantelephone"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && guardiantelephone.invalid }"
+                            #guardiantelephone="ngModel" required/>  
+                            <label class="control-label input-label" >Contact No: </label> 
+                            <div *ngIf="f.submitted && !guardiantelephone.valid" class="invalid-feedback">
+                                <div *ngIf="guardiantelephone.errors.required">Guardian's Telephone No. is required</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div >
+                            
+                            <input type="text"  id="guradianaddress" [(ngModel)]="guardian.address" name="guradianaddress"  class="form-control input"
+                            [ngClass]="{ 'is-invalid': f.submitted && guradianaddress.invalid }"
+                            #guradianaddress="ngModel" required/>  
+                            <label class="control-label input-label" >Address: </label> 
+                            <div *ngIf="f.submitted && !guradianaddress.valid" class="invalid-feedback">
+                                <div *ngIf="guradianaddress.errors.required">Guardian's Address is required</div>
+                        </div>
+                        </div>
+                    </div>
+            </fieldset>
+<!-- Additional details-->
+            <fieldset  id="inner">
+    
+                        <legend class="scheduler-border" style="width:14%">Additional information</legend>
+                        <div class="control-group">
+                            <div >
+                                 
+                                <input type="text"  id="bhtno" name="bhtno" [(ngModel)]="parent.additional.motherBhtNo" class="form-control input"
+                                [ngClass]="{ 'is-invalid': f.submitted && bhtno.invalid }"
+                            #bhtno="ngModel" required/>  
+                            <label class="control-label input-label" >Mother BHT No: </label>
+                            <div *ngIf="f.submitted && !bhtno.valid" class="invalid-feedback">
+                                <div *ngIf="bhtno.errors.required">Mother's BHT No. is required</div>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div >
+                                
+                                <input type="text"  id="ward" name="ward" [(ngModel)]="parent.additional.ward" class="form-control input"
+                                [ngClass]="{ 'is-invalid': f.submitted && ward.invalid }"
+                            #ward="ngModel" required/>  
+                            <label class="control-label input-label" >Ward: </label> 
+                            <div *ngIf="f.submitted && !ward.valid" class="invalid-feedback">
+                                <div *ngIf="ward.errors.required">Mother's Ward is required</div>
+                        </div>
+                            </div>
+                         </div>
+                         <div class="control-group">
+                            <div >
+                                 
+                                <input type="text"  id="birthcertino" name="birthCertificate" [(ngModel)]="parent.additional.birthCertificateNo"  class="form-control input"
+                                [ngClass]="{ 'is-invalid': f.submitted && birthcertino.invalid }"
+                            #birthcertino="ngModel" required/>  
+                            <label class="control-label input-label" >Birth Certificate No: </label>
+                            <div *ngIf="f.submitted && !birthcertino.valid" class="invalid-feedback">
+                                <div *ngIf="birthcertino.errors.required"> Birth Certificate No. is required</div>
+                        </div>
+                            </div>
+                         </div>
+                       
+                         
+                         <div class="control-group">
+                            <div style="padding-top: 6px;">
+                                   
+                                  <select class="form-control input" [(ngModel)]="parent.additional.detailsOfdelivary" name="detailsofdelivary" id="detailsofdelivary"
+                                  [ngClass]="{ 'is-invalid': f.submitted && detailsofdelivary.invalid }"
+                            #detailsofdelivary="ngModel" required>
+                                        <option *ngFor="let detail of delivary" >{{detail}}</option>
+                                    </select>
+                                    <label class="control-label input-label" >Details Of Delivary: </label>
+                                    <div *ngIf="f.submitted && !detailsofdelivary.valid" class="invalid-feedback">
+                                        <div *ngIf="detailsofdelivary.errors.required"> Details Of Delivery is required</div>
+                                </div>
+                            </div>
+                         </div>
+                         <br>
+                        
+                         <div class="control-group">
+                             <div >
+                                  <label class="control-label input-label" >Complication In Delivary: </label>&nbsp;&nbsp;
+                                  <input type="radio" class="radio" [(ngModel)]="parent.additional.complicationOfDelivary" name="delivary" value="No Complication" checked/>&nbsp;&nbsp;No Complication&nbsp;&nbsp;
+                                  <input type="radio" class="radio" [(ngModel)]="parent.additional.complicationOfDelivary" name="delivary" vlaue="Complication">&nbsp;&nbsp;Complication
+                             </div>
+                          </div>
+                          <div class="control-group">
+                                
+                                <textarea  id="remarks" [(ngModel)]="parent.additional.remarks" name="remarks"
+                                [ngClass]="{ 'is-invalid': f.submitted && remarks.invalid }" class="form-control"
+                            #remarks="ngModel" required></textarea> 
+                            <label class="control-label input-label">Remarks:</label>
+                            <div *ngIf="f.submitted && !remarks.valid" class="invalid-feedback">
+                                <div *ngIf="remarks.errors.required"> Remarks are required</div>
+                        </div>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                     
+                           <div class="control-group">
+                                <div>
+                                     
+                                    <select class="form-control input" [(ngModel)]="parent.additional.intantstatus" name="intantstatus" id="intantstatus"
+                                    [ngClass]="{ 'is-invalid': f.submitted && intantstatus.invalid }"
+                                    #intantstatus="ngModel" required>
+                                        <option *ngFor="let s of status" >{{s}}</option>
+                                    </select>
+                                    <label class="control-label input-label" >Infant Status: </label>
+                                    <div *ngIf="f.submitted && !intantstatus.valid" class="invalid-feedback">
+                                        <div *ngIf="intantstatus.errors.required">Infant Status is required</div>
+                                </div>
+                                </div>
+                            </div>      
+                </fieldset>                    
+        </fieldset>
+    
+        <div id="foot">
+        <div id="butt">
+            <button type="submit" class="bform"  >Save Entry</button>&nbsp;&nbsp;
+            <button type="reset"  class="bform">Reset</button>&nbsp;&nbsp;   
+        </div>
+        </div>
+    </form>
+        </div>
+        </div>
+    

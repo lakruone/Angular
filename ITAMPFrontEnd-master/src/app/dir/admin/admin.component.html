@@ -1,0 +1,26 @@
+<app-navthree></app-navthree>
+
+<div style="padding-left:30px">
+<div id="form">
+     <div id="head">    
+
+    <button id="bhead" ><b>View the List of Users</b></button>
+    </div>
+       
+         <input type="button" class="bform" value="View Users"/> &nbsp; &nbsp; <input type="button" class="bform" value="Add New Vaccine" (click)="addvacForm()"/> 
+<br><br>
+
+<form name="form" (ngSubmit)="f.form.valid &&  getByUserId(regid) "  #f="ngForm" novalidate>
+            <h2>User Details</h2>
+            
+<ul class="users">
+  <li *ngFor="let users of Users"
+    [class.selected]="user === selectedUsers"
+  >
+    <span class="badge">{{user.id}}</span> {{user.name}}
+  </li>
+</ul>
+</form>  
+              
+         
+          

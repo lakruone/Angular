@@ -1,0 +1,60 @@
+<app-navthree></app-navthree>
+<div style="padding-left:30px">
+<div id="form">
+     <div id="head">    
+
+    <button id="bhead" ><b>Add New Vaccine</b></button>
+
+    <form name="form" (ngSubmit)="f.form.valid && createVaccine(vaccineForm.value) && newVaccine() && deleteVaccine()" [formGroup]="vaccineForm" #f="ngForm" novalidate> 
+        
+                        <div>
+                            <br>
+                            
+                            
+                            <input class=" form-control " formControlName="vaccineName" type="text"  id="vaccineName" name="vaccineName" />
+                            <label class="control-label input-label" >Vaccine Name : </label>
+                             <br>
+                             
+                            <input class=" form-control fin" formControlName="vaccineAge" type="text"  id="vaccineAge" name="vaccineAge" />
+                            <label class="control-label input-label" >Due Age: </label><br>
+                            
+                             
+                            <input type="text" class=" form-control fin" formControlName="rol" id="rol" name="rol"   /> 
+                            <label class="control-label input-label" >Re-order Level : </label><br> 
+                            
+                             
+                            <input type="text" class=" form-control fin" formControlName="qty" id="rol" name="qty"/>
+                            <label class="control-label input-label" >Quantity : </label> <br> 
+                            
+                             
+                            <input type="text"class=" form-control fin" formControlName="des" id="vaccineName" name="des" />
+                            <label class="control-label input-label" >Description : </label> <br>
+                        </div>
+                       <br>
+                        <button type="submit"  class="btn btn-secondary">Add New Vaccine</button>
+                        </form><br>
+
+                        <button id="bhead" ><b>Delete Vaccine</b></button>
+
+
+                        <form name="form" (ngSubmit)="f.form.valid && createVaccine(vaccineForm.value)" [formGroup]="vaccineForm" #f="ngForm" novalidate> 
+        
+                                <div>
+                                    <br>
+                                    
+                                    
+                                    <input class=" form-control " formControlName="vaccineName" type="text"  id="vaccineName" name="vaccineName" />
+                                    <label class="control-label input-label" >Vaccine Name : </label>
+                                     <br>
+
+
+                                     </div>
+
+                                     <br>
+                                     
+                        <button type="submit"  class="btn btn-secondary">Delete Vaccine</button>
+                                     </form>
+
+                        </div>
+                        </div>
+                        </div>

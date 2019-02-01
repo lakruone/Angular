@@ -1,0 +1,86 @@
+
+<img src="/src/assets/image/webiis.jpg"/>
+<div id="position">
+   <form name="form" (ngSubmit)="f.form.valid && createUser()" #f="ngForm" novalidate>
+     
+      <h4>Register New User:</h4>
+      <div class="form-group">
+     
+        <i class="fa fa-user icon"></i>
+        <input type="text" class="form-control"  id="firstname"  placeholder="First Name"
+        [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }"
+        name="firstname"  [(ngModel)]="user.firstname" #firstname="ngModel" required />
+        <div *ngIf="f.submitted && !firstname.valid" class="invalid-feedback">
+          <div *ngIf="firstname.errors.required">First Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+     
+          <i class="fa fa-user icon"></i>
+          <input type="text" class="form-control"  id="lastname"  placeholder="Last Name"
+          [ngClass]="{ 'is-invalid': f.submitted && lastname.invalid }"
+          name="lastname"  [(ngModel)]="user.lastName" #lastname="ngModel" required />
+          <div *ngIf="f.submitted && !lastname.valid" class="invalid-feedback">
+            <div *ngIf="lastname.errors.required">Last Name is required</div>
+          </div>
+        </div>
+   
+        <div class="form-group">
+     
+            <i class="fa fa-user icon"></i>
+            <input type="text" class="form-control"  id="email"  placeholder="Email Address"
+            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+            name="email"  [(ngModel)]="user.email" #email="ngModel" required />
+            <div *ngIf="f.submitted && !email.valid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email Address is required</div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+     
+              <i class="fa fa-user icon"></i>
+              <input type="text" class="form-control"  id="contactno"  placeholder="Contact Number"
+              [ngClass]="{ 'is-invalid': f.submitted && contactno.invalid }"
+              name="contactno"  [(ngModel)]="user.contactNo" #contactno="ngModel" required />
+              <div *ngIf="f.submitted && !contactno.valid" class="invalid-feedback">
+                <div *ngIf="contactno.errors.required">Contact Number is required</div>
+              </div>
+            </div>
+
+      <div class="form-group">
+      <i class="fa fa-user icon"></i>
+      <input type="text" class="form-control"  id="username"  placeholder="User Name"
+      [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+      name="username"  [(ngModel)]="user.username" #username="ngModel" required />
+      <div *ngIf="f.submitted && !username.valid" class="invalid-feedback">
+        <div *ngIf="username.errors.required">User Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+
+      <i class="fa fa-key icon"></i>
+      <input type="password" class="form-control" id="password" placeholder="Password"
+      [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+      name="password" [(ngModel)]="user.password" #password="ngModel" required />
+      <div *ngIf="f.submitted && !password.valid" class="invalid-feedback">
+        <div *ngIf="password.errors.required">Password is required</div>
+      </div>
+    </div>
+      <div class="from-group">          
+        <select class="form-control" id="role" [(ngModel)]="user.role.role" name="role" aria-placeholder="select user"
+        [ngClass]="{ 'is-invalid': f.submitted && role.invalid }"  #role="ngModel" required>
+         <option *ngFor="let r of roles" >{{r}}</option>
+        </select>
+        <div *ngIf="f.submitted && !role.valid" class="invalid-feedback">
+            <div *ngIf="role.errors.required">role select is required</div>
+    </div>    
+    </div>
+     <br>
+    <button type="submit"  class="btn btn-secondary">Add User</button> 
+    <button type="reset"  class="btn btn-secondary">Clear</button>
+    <br><br>
+   
+   </form>
+  </div>
+  

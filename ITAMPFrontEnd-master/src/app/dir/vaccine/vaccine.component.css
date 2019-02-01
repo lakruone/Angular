@@ -1,0 +1,48 @@
+#inner{
+    width:104%;
+    color: #000;
+    border: 1px groove rgba(36, 21, 30, 0.486) !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em -33px !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+#vaccineName{
+    width:1105px;
+    height:27px;
+    background-color: transparent; 
+    position: absolute;
+    left:211px; 
+    outline: none;
+    border-radius: 3px;
+    padding-left: 10px;
+    z-index:8;
+    box-shadow:inset 0px 0px 3px 3px rgba(95, 88,88, 0.09);
+    border:1px solid #2db15e96
+     
+    }
+
+
+    .fin{
+        width:1105px;
+        height:27px;
+        background-color: transparent; 
+        position: absolute;
+        left:211px; 
+        outline: none;
+        border-radius: 3px;
+        padding-left: 10px;
+        z-index:8;
+        box-shadow:inset 0px 0px 3px 3px rgba(95, 88,88, 0.09);
+        border:1px solid #2db15e96
+         
+        }
+        input[type=time]::-webkit-datetime-edit-ampm-field {
+            display: none;
+          }
+
+
+          #form{
+            padding-top: 11%;
+        }
